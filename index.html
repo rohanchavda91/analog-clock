@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="clockApp">
+<head>
+    <title>Continuous Analog Clock with Markers</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body ng-controller="ClockController">
+
+    <div class="clock">
+        <!-- 60 Markers (Dots for minutes, Dashes for hours) -->
+        <div class="marker" 
+             ng-repeat="i in markers track by $index" 
+             ng-style="{'transform': 'rotate(' + ($index * 6) + 'deg)'}"
+             ng-class="{'hour-mark': $index % 5 === 0, 'minute-mark': $index % 5 !== 0}">
+        </div>
+
+        <div class="dot-center"></div>
+
+        <!-- Hands -->
+        <div class="hand hour" ng-style="hourStyle"></div>
+        <div class="hand minute" ng-style="minuteStyle"></div>
+        <div class="hand second" ng-style="secondStyle"></div>
+    </div>
+
+</body>
+</html>
